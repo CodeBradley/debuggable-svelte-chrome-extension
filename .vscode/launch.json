@@ -1,0 +1,32 @@
+/**
+* Todo: Add a configuration that loads options, popup, etc. via the "url" property
+*/
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome",
+            "url": "https://www.svelte.dev/",
+            "runtimeArgs": ["--load-extension=${workspaceFolder}/dist", "--auto-open-devtools-for-tabs"],
+            "resolveSourceMapLocations": [
+                "${workspaceFolder}/dist/**",
+                "!**/node_modules/**"
+            ],
+            //"smartStep": true,
+        },
+        { 
+            /**
+            * Requires Debugger for Firefox Extension
+            * Todo: Autoload extension like chrome does via runetimeArgs
+            */
+            "type": "firefox",
+            "request": "launch",
+            "name": "Launch Firefox",
+            "url": "https://svelte.dev/",
+            "addonPath": "${workspaceFolder}/dist",
+            "firefoxArgs": ["--devtools"],
+        }
+    ]
+}

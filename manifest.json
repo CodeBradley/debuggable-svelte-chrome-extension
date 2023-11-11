@@ -1,0 +1,28 @@
+{
+  "{{chrome}}.manifest_version": 3,
+  "permissions": [
+    "sidePanel",
+    "storage"
+  ],
+  "{{chrome}}.action": {
+    "default_popup": "src/popups/app.html"
+  },
+  "{{chrome}}.side_panel": {
+    "default_path": "src/side-panels/app.html"
+  },
+  "{{chrome}}.content_scripts": [
+    {
+      "matches": [
+        "https://*/*",
+        "http://*/*"
+      ],
+      "js": ["src/content-scripts/app.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+        "resources": ["*.js.map"],
+        "matches": ["https://*/*","http://*/*"]
+    }
+  ]
+}

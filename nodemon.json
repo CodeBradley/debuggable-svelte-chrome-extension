@@ -1,0 +1,4 @@
+{
+    "watch": ["./src/**", "./public/**"],
+    "ext": "json,css,html,svelte"
+}

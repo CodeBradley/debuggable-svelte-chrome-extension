@@ -1,0 +1,32 @@
+import { defineConfig } from "vite";
+import { svelte } from "@sveltejs/vite-plugin-svelte";
+import webExtension, { readJsonFile } from "vite-plugin-web-extension";
+
+function generateManifest() {
+  const manifest = readJsonFile("manifest.json");
+  const pkg = readJsonFile("package.json");
+  return {
+    name: pkg.name,
+    description: pkg.description,
+    version: pkg.version,
+    ...manifest,
+  };
+}
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  build: {
+    emptyOutDir: true,
+    sourcemap: true
+  },
+  plugins: [
+    svelte(),
+    webExtension({
+      manifest: generateManifest,
+      watchFilePaths: [
+        "package.json", 
+        "manifest.json"
+      ],
+    }),
+  ],
+});
